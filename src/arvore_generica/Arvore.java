@@ -1,29 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
-class No<Tipo> {
-	Tipo dado;
-	List<No<Tipo>> filhos;
-	
-	// construtor
-	public No(Tipo dado){
-		this.dado = dado;
-		this.filhos = new ArrayList<>();
-	}
-	
-	// insere um filho à direita na lista
-	public void inserirFilho(No<Tipo> filho){
-		this.filhos.add(filho);
-	}
-	
-	// identifica se o nó é uma folha
-	public boolean noFolha() {
-		return this.filhos.isEmpty();
-	}
-	
-}
-
-
 public class Arvore<Tipo> {
 	No<Tipo> raiz;
 	
