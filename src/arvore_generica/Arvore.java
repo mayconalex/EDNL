@@ -1,18 +1,18 @@
 import java.util.ArrayList;
 import java.util.List;
 
-class No<T> {
-	T dado;
-	List<No<T>> filhos;
+class No<Tipo> {
+	Tipo dado;
+	List<No<Tipo>> filhos;
 	
 	// construtor
-	public No(T dado){
+	public No(Tipo dado){
 		this.dado = dado;
 		this.filhos = new ArrayList<>();
 	}
 	
 	// insere um filho à direita na lista
-	public void inserirFilho(No<T> filho){
+	public void inserirFilho(No<Tipo> filho){
 		this.filhos.add(filho);
 	}
 	
@@ -24,19 +24,19 @@ class No<T> {
 }
 
 
-public class Arvore<T> {
-	No<T> raiz;
+public class Arvore<Tipo> {
+	No<Tipo> raiz;
 	
     // Árvore vazia
     public Arvore() {
         this.raiz = null;
     }
 
-	public Arvore(T dadoRaiz){
+	public Arvore(Tipo dadoRaiz){
 		this.raiz = new No<>(dadoRaiz);
 	}
 	
-    public No<T> getRaiz() {
+    public No<Tipo> getRaiz() {
         return this.raiz;
     }
 
@@ -44,7 +44,7 @@ public class Arvore<T> {
         return this.raiz == null;
     }
 
-    public void criarRaiz(No<T> raiz) {
+    public void criarRaiz(No<Tipo> raiz) {
         if (isEmpty()) {
             this.raiz = raiz;
         }
@@ -58,10 +58,10 @@ public class Arvore<T> {
         return this.alturaNo(this.raiz);
     }
 
-    private int alturaNo(No<T> no) {
+    private int alturaNo(No<Tipo> no) {
         int maiorAltura = 0;
 
-        for (No<T> filho: no.filhos) {
+        for (No<Tipo> filho: no.filhos) {
             int alturaFilho = alturaNo(filho);
             
             if (alturaFilho > maiorAltura) {
@@ -72,7 +72,7 @@ public class Arvore<T> {
         return maiorAltura + 1;
     }
 
-    public No<T> buscar(T dado) {
+    public No<Tipo> buscar(Tipo dado) {
         if (this.isEmpty()) {
             throw new RuntimeException("A Árvore está vazia!");
         }
@@ -80,13 +80,13 @@ public class Arvore<T> {
         return buscarNo(this.raiz, dado);
     }
 
-    private No<T> buscarNo(No<T> noAtual, T dado) {
+    private No<Tipo> buscarNo(No<Tipo> noAtual, Tipo dado) {
         if (noAtual.dado == dado) {
             return noAtual;
         }
 
-        for (No<T> filho: noAtual.filhos) {
-            No<T> no = buscarNo(filho, dado);
+        for (No<Tipo> filho: noAtual.filhos) {
+            No<Tipo> no = buscarNo(filho, dado);
             if (no != null) {
                 return no;
             }
@@ -95,14 +95,14 @@ public class Arvore<T> {
         throw new RuntimeException("Nó não encontrado.");
     }
 
-	public void inserirNo(No<T> pai, T dadoFilho){
+	public void inserirNo(No<Tipo> pai, Tipo dadoFilho){
 		if(pai != null){
-			No<T> noFilho = new No<>(dadoFilho);
+			No<Tipo> noFilho = new No<>(dadoFilho);
 			pai.inserirFilho(noFilho);
 		}
 	}
 
-    public void inserirNo(No<T> pai, No<T> filho) {
+    public void inserirNo(No<Tipo> pai, No<Tipo> filho) {
         if (pai != null) {
             pai.inserirFilho(filho);
         }
@@ -113,12 +113,12 @@ public class Arvore<T> {
 		System.out.println("");
 	}
 	
-	private void imprimirRecursivo(No<T> noAtual, String recuo){
+	private void imprimirRecursivo(No<Tipo> noAtual, String recuo){
 		if(noAtual == null) return;
 		
 		System.out.println(recuo + "+- " + noAtual.dado);
 		
-		for(No<T> filho: noAtual.filhos){
+		for(No<Tipo> filho: noAtual.filhos){
 			imprimirRecursivo(filho, recuo + " ");
 		}
 	
