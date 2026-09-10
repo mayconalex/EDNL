@@ -1,13 +1,14 @@
 public class Arvore<Tipo> {
 	No<Tipo> raiz;
 	
-    // Árvore vazia
+    // Construtor (árvore vazia)
     public Arvore() {
         this.raiz = null;
     }
 
-	public Arvore(Tipo dadoRaiz){
-		this.raiz = new No<>(dadoRaiz);
+    // Construtor (árvore com nó raiz)
+	public Arvore(Tipo raiz){
+		this.raiz = new No<>(raiz);
 	}
 	
     public No<Tipo> getRaiz() {
@@ -35,7 +36,7 @@ public class Arvore<Tipo> {
     private int alturaNo(No<Tipo> no) {
         int maiorAltura = 0;
 
-        for (No<Tipo> filho: no.filhos) {
+        for (No<Tipo> filho : no.filhos) {
             int alturaFilho = alturaNo(filho);
             
             if (alturaFilho > maiorAltura) {
