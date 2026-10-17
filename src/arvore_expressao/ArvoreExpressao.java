@@ -81,4 +81,34 @@ public class ArvoreExpressao {
         imprimir(no.getFilhoEsquerdo(), recuo + "   ");
         imprimir(no.getFilhoDireito(), recuo + "   ");
     }
+
+    public int avaliar() {
+        if (estaVazia()) {
+            throw new RuntimeException("A Árvore está vazia!");
+        }
+
+        return avaliar(this.raiz);
+    }
+
+    private int avaliar(No no) {
+        if (no.noFolha()) {
+            return Integer.parseInt(no.getValor());
+        }
+
+        int elem_esq = avaliar(no.getFilhoEsquerdo());
+        int elem_dir = avaliar(no.getFilhoDireito());
+
+        switch (no.getValor()) {
+            case "+":
+                return elem_esq + elem_dir;
+            case "-":
+                return elem_esq - elem_dir;
+            case "*":
+                return elem_esq * elem_dir;
+            case "/":
+                return elem_esq / elem_dir;
+            default:
+                throw new RuntimeException("Operador desconhecido!");
+        }
+    }
 }
