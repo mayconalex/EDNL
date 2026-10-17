@@ -67,4 +67,18 @@ public class ArvoreExpressao {
         posOrdem(no.getFilhoDireito());
         System.out.print(no.getValor() + " ");
     }
+
+    public void imprimir() {
+        imprimir(this.raiz, "");
+    }
+
+    private void imprimir(No no, String recuo) {
+        // Caso base
+        if (no == null) return;
+
+        System.out.println(recuo + "+- " + no.getValor());
+
+        imprimir(no.getFilhoEsquerdo(), recuo + "   ");
+        imprimir(no.getFilhoDireito(), recuo + "   ");
+    }
 }
