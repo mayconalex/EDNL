@@ -29,7 +29,12 @@ public class ArvoreExpressao {
     }
 
     private void preOrdem(No no) {
-        // TODO: método que conterá a lógica de pré-ordem
+        // Caso base
+        if (no == null) return;
+
+        System.out.print(no.getValor() + " ");
+        preOrdem(no.getFilhoEsquerdo());
+        preOrdem(no.getFilhoDireito());
     }
 
     public void emOrdem() {
@@ -38,7 +43,12 @@ public class ArvoreExpressao {
     }
 
     private void emOrdem(No no) {
-        // TODO: método que conterá a lógica de em-ordem
+        // Caso base
+        if (no == null) return;
+
+        emOrdem(no.getFilhoEsquerdo());
+        System.out.print(no.getValor() + " ");
+        emOrdem(no.getFilhoDireito());
     }
 
     public void posOrdem() {
@@ -47,6 +57,11 @@ public class ArvoreExpressao {
     }
 
     private void posOrdem(No no) {
-        // TODO: método que conterá a lógica de pós-ordem
+        // Caso base
+        if (no == null) return;
+
+        posOrdem(no.getFilhoEsquerdo());
+        posOrdem(no.getFilhoDireito());
+        System.out.print(no.getValor() + " ");
     }
 }
