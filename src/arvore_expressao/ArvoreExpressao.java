@@ -32,6 +32,7 @@ public class ArvoreExpressao {
         // Caso base
         if (no == null) return;
 
+        // Raiz > Esquerda > Direita
         System.out.print(no.getValor() + " ");
         preOrdem(no.getFilhoEsquerdo());
         preOrdem(no.getFilhoDireito());
@@ -46,6 +47,7 @@ public class ArvoreExpressao {
         // Caso base
         if (no == null) return;
 
+        // Esquerda > Raiz > Direita
         emOrdem(no.getFilhoEsquerdo());
         System.out.print(no.getValor() + " ");
         emOrdem(no.getFilhoDireito());
@@ -60,6 +62,7 @@ public class ArvoreExpressao {
         // Caso base
         if (no == null) return;
 
+        // Esquerda > Direita > Raiz
         posOrdem(no.getFilhoEsquerdo());
         posOrdem(no.getFilhoDireito());
         System.out.print(no.getValor() + " ");
